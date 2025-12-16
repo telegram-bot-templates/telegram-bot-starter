@@ -3,18 +3,25 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "cli": "./src/interfaces/cli.ts"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "polling": "tsx src/interfaces/telegram-polling.ts",
+    "start": "tsx src/interfaces/telegram.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "chalk": "^5.6.2",
+    "cli-table3": "^0.6.5",
     "commander": "^14.0.2",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.45.1",
     "express": "^5.2.1",
+    "ora": "^9.0.0",
     "postgres": "^3.4.7",
     "telegraf": "^4.16.3",
     "zod": "^4.2.0"
