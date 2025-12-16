@@ -52,7 +52,7 @@ Each layer has one purpose and only calls the layer directly below it.
 
 **Responsibilities:**
 
-- Validate all inputs with Zod schemas (defined in `src/schemas/`)
+- Validate all inputs with Zod schemas
 - Orchestrate Layer 1 operations to complete commands
 - Implement command-level business rules
 - Return structured results
@@ -90,7 +90,6 @@ src/
 ├── db/                    # Layer 0: Database I/O
 ├── services/              # Layer 0: External API I/O
 ├── lib/                   # Layer 1: All operations
-├── schemas/               # Zod validation schemas
 ├── api/                   # Layer 2: Commands (business logic)
 └── interfaces/            # Layer 3: UI (CLI, polling, webhooks)
 ```
@@ -98,7 +97,7 @@ src/
 ## Dependency Rules
 
 - **Layer 3 → Layer 2 only**
-- **Layer 2 → Layer 1 only** (never Layer 0)
+- **Layer 2 → Layer 1 only**
 - **Layer 1 → Layer 0 only**
 - **Layer 0 → nothing**
 
@@ -106,14 +105,14 @@ Never skip layers. Never reverse direction.
 
 ## Adding a Feature
 
-1. **Layer 1:** Create operations for database/service interactions
-2. **Schemas:** Define Zod validation schema
+1. **Schemas:** Define Zod validation schema
+2. **Layer 1:** Create operations for database/service interactions
 3. **Layer 2:** Create command that validates and orchestrates Layer 1
 4. **Layer 3:** Add to CLI, then both Telegram interfaces
 
 ## Validation
 
-All Layer 2 commands must validate inputs with Zod. Schemas live in `src/schemas/`.
+All Layer 2 commands must validate inputs with Zod.
 
 ## Testing Flow
 

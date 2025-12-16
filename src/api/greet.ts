@@ -3,8 +3,15 @@
  * Business logic that validates inputs and orchestrates Layer 1 operations
  */
 
+import { z } from "zod";
 import { formatGreeting } from "../lib/greet";
-import { greetSchema, type GreetInput } from "../schemas/greet";
+
+// Input validation schema
+const greetSchema = z.object({
+  name: z.string().min(1, "Name cannot be empty"),
+});
+
+type GreetInput = z.infer<typeof greetSchema>;
 
 export function greet(input: GreetInput) {
   // Validate input with Zod
