@@ -6,12 +6,10 @@
  * Only calls Layer 2 commands
  */
 
-import dotenv from "dotenv";
+import "dotenv/config";
 import express from "express";
 import { Telegraf } from "telegraf";
 import { registerHandlers } from "./telegram-handlers";
-
-dotenv.config();
 
 const token = process.env.TELEGRAM_BOT_API_KEY;
 if (!token) {
